@@ -7,24 +7,20 @@ package com.figure;
  */
 public class Segment extends Figure1D {
 
-	private Point guidePoint;
+    private Point guidePoint;
 
-	public Segment(){
+    public Segment() {
 
-	}
+    }
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	public void draw(){
+    public void draw() {
 
-	}
+    }
 
-	/**
-	 * 
-	 * @param center
-	 */
-	public void move(Point center){
+    /**
+     * @param point
+     */
+    public void move(Point point) {
 
-	}
-}//end com.olrox.drawing.Segment
+    }
+}

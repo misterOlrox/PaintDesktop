@@ -7,11 +7,7 @@ package com.figure;
  */
 public class Triangle extends Polygon {
 
-	public Triangle(){
+    public Triangle() {
 
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-}//end com.olrox.drawing.Triangle
+    }
+}

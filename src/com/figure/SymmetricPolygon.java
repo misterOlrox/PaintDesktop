@@ -7,16 +7,13 @@ package com.figure;
  */
 public class SymmetricPolygon extends Polygon {
 
-	private int sidesNumber;
+    private int sidesNumber;
 
-	public SymmetricPolygon(){
+    public SymmetricPolygon() {
 
-	}
+    }
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	public int getSidesNumber(){
-		return 0;
-	}
-}//end com.olrox.drawing.SymmetricPolygon
+    public int getSidesNumber() {
+        return 0;
+    }
+}

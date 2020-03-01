@@ -7,24 +7,20 @@ package com.figure;
  */
 public class Ellipse extends Figure2D {
 
-	private Point peripheralPoint;
+    private Point peripheralPoint;
 
-	public Ellipse(){
+    public Ellipse() {
 
-	}
+    }
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	public void draw(){
+    public void draw() {
 
-	}
+    }
 
-	/**
-	 * 
-	 * @param center
-	 */
-	public void move(Point center){
+    /**
+     * @param point
+     */
+    public void move(Point point) {
 
-	}
-}//end com.olrox.drawing.Ellipse
+    }
+}

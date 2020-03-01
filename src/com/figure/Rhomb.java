@@ -7,19 +7,15 @@ package com.figure;
  */
 public class Rhomb extends Polygon {
 
-	public Rhomb(){
+    public Rhomb() {
 
-	}
+    }
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	/**
-	 * 
-	 * @param leftTop
-	 * @param rightBottom
-	 */
-	public Rhomb(Point leftTop, Point rightBottom){
+    /**
+     * @param leftTop
+     * @param rightBottom
+     */
+    public Rhomb(Point leftTop, Point rightBottom) {
 
-	}
-}//end com.olrox.drawing.Rhomb
+    }
+}

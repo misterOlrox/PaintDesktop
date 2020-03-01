@@ -27,9 +27,10 @@ public abstract class Figure {
     }
 
     /**
-     * @param center
+     * @param point
      */
-    public void move(Point center) {
-
+    public void move(Point point) {
+        refPoint = point;
+        draw();
     }
 }

@@ -7,19 +7,15 @@ package com.figure;
  */
 public class Rectangle extends Polygon {
 
-	public Rectangle(){
+    public Rectangle() {
 
-	}
+    }
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	/**
-	 * 
-	 * @param leftTop
-	 * @param rightBottom
-	 */
-	public Rectangle(Point leftTop, Point rightBottom){
+    /**
+     * @param leftTop
+     * @param rightBottom
+     */
+    public Rectangle(Point leftTop, Point rightBottom) {
 
-	}
-}//end com.olrox.drawing.Rectangle
+    }
+}

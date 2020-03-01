@@ -7,11 +7,7 @@ package com.figure;
  */
 public class RegularTriangle extends SymmetricPolygon {
 
-	public RegularTriangle(){
+    public RegularTriangle() {
 
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-}//end com.olrox.drawing.RegularTriangle
+    }
+}

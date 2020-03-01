@@ -7,14 +7,11 @@ package com.figure;
  */
 public class Line extends Ray {
 
-	public Line(){
+    public Line() {
 
-	}
+    }
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	public void draw(){
+    public void draw() {
 
-	}
-}//end com.olrox.drawing.Line
+    }
+}

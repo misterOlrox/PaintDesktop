@@ -7,25 +7,21 @@ package com.figure;
  */
 public class PolyLine extends Figure1D {
 
-	private Segment[] segments;
-	public Segment m_Segment;
+    private Segment[] segments;
+    public Segment m_Segment;
 
-	public PolyLine(){
+    public PolyLine() {
 
-	}
+    }
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	public void draw(){
+    public void draw() {
 
-	}
+    }
 
-	/**
-	 * 
-	 * @param center
-	 */
-	public void move(Point center){
+    /**
+     * @param point
+     */
+    public void move(Point point) {
 
-	}
-}//end com.olrox.drawing.PolyLine
+    }
+}

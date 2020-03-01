@@ -7,19 +7,15 @@ package com.figure;
  */
 public class Circle extends Ellipse {
 
-	public Circle(){
+    public Circle() {
 
-	}
+    }
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	/**
-	 * 
-	 * @param center
-	 * @param onRadius
-	 */
-	public Circle(Point center, Point onRadius){
+    /**
+     * @param center
+     * @param onRadius
+     */
+    public Circle(Point center, Point onRadius) {
 
-	}
-}//end com.olrox.drawing.Circle
+    }
+}

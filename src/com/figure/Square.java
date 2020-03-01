@@ -7,11 +7,7 @@ package com.figure;
  */
 public class Square extends SymmetricPolygon {
 
-	public Square(){
+    public Square() {
 
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-}//end com.olrox.drawing.Square
+    }
+}

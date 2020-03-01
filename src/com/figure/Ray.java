@@ -7,14 +7,11 @@ package com.figure;
  */
 public class Ray extends Segment {
 
-	public Ray(){
+    public Ray() {
 
-	}
+    }
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	public void draw(){
+    public void draw() {
 
-	}
-}//end com.olrox.drawing.Ray
+    }
+}
