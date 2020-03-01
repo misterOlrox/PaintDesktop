@@ -1,4 +1,4 @@
-package com.figure;
+package drawing.figure;
 
 public class Point {
 

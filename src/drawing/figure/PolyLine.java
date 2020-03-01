@@ -1,4 +1,7 @@
-package com.figure;
+package drawing.figure;
+
+import java.awt.Color;
+import java.awt.Graphics;
 
 /**
  * @author vitam
@@ -10,8 +13,10 @@ public class PolyLine extends Figure1D {
     private Segment[] segments;
     public Segment m_Segment;
 
-    public PolyLine() {
-
+    public PolyLine(Graphics graphics, Color lineColor, Point refPoint, Segment[] segments, Segment m_Segment) {
+        super(graphics, lineColor, refPoint);
+        this.segments = segments;
+        this.m_Segment = m_Segment;
     }
 
     public void draw() {
