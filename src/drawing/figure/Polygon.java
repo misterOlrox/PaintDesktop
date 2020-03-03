@@ -1,5 +1,7 @@
 package drawing.figure;
 
+import drawing.app.UserChoice;
+
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -12,9 +14,8 @@ public class Polygon extends Figure2D {
 
     private Point[] points;
 
-    public Polygon(Graphics graphics, Color lineColor, Color filling, Point refPoint, Point[] points) {
-        super(graphics, lineColor, filling, refPoint);
-        this.points = points;
+    protected Polygon() {
+        super();
     }
 
     public void draw() {
@@ -26,5 +27,17 @@ public class Polygon extends Figure2D {
      */
     public void move(Point point) {
 
+    }
+
+    public static class FactoryMethod implements Figure.FactoryMethod {
+        @Override
+        public Figure create(UserChoice userChoice) {
+            return new Polygon();
+        }
+
+        @Override
+        public String getFigureType() {
+            return "Polygon";
+        }
     }
 }

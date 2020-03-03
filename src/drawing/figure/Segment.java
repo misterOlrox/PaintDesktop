@@ -1,5 +1,7 @@
 package drawing.figure;
 
+import drawing.app.UserChoice;
+
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -12,12 +14,12 @@ public class Segment extends Figure1D {
 
     private Point guidePoint;
 
-    public Segment(Graphics graphics, Color lineColor, Point refPoint, Point guidePoint) {
-        super(graphics, lineColor, refPoint);
-        this.guidePoint = guidePoint;
+    protected Segment() {
+        super();
     }
 
     public void draw() {
+        getGraphics().setColor(getLineColor());
         getGraphics().drawLine(
                 getLocation().getX(), getLocation().getY(),
                 guidePoint.getX(), guidePoint.getY()
@@ -29,5 +31,22 @@ public class Segment extends Figure1D {
      */
     public void move(Point point) {
 
+    }
+
+    public static Figure create() {
+        return new Segment();
+    }
+
+    public static class FactoryMethod implements Figure.FactoryMethod {
+        @Override
+        public String getFigureType() {
+            return "Segment";
+        }
+
+        @Override
+        public Figure create(UserChoice userChoice) {
+            Segment segment = new Segment();
+            return segment;
+        }
     }
 }

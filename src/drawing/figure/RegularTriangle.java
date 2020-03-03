@@ -10,7 +10,4 @@ import java.awt.Graphics;
  */
 public class RegularTriangle extends SymmetricPolygon {
 
-    public RegularTriangle(Graphics graphics, Color lineColor, Color filling, Point refPoint, Point[] points, int sidesNumber) {
-        super(graphics, lineColor, filling, refPoint, points, sidesNumber);
-    }
 }

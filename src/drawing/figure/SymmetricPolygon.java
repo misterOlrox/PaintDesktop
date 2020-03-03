@@ -12,11 +12,6 @@ public class SymmetricPolygon extends Polygon {
 
     private int sidesNumber;
 
-    public SymmetricPolygon(Graphics graphics, Color lineColor, Color filling, Point refPoint, Point[] points, int sidesNumber) {
-        super(graphics, lineColor, filling, refPoint, points);
-        this.sidesNumber = sidesNumber;
-    }
-
     public int getSidesNumber() {
         return 0;
     }

@@ -1,5 +1,7 @@
 package drawing.figure;
 
+import drawing.app.UserChoice;
+
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -18,6 +20,10 @@ public abstract class Figure {
         this.lineColor = lineColor;
         this.refPoint = refPoint;
         this.graphics = graphics;
+    }
+
+    public Figure() {
+
     }
 
     public abstract void draw();
@@ -40,5 +46,10 @@ public abstract class Figure {
 
     public Graphics getGraphics() {
         return graphics;
+    }
+
+    public interface FactoryMethod {
+        Figure create(UserChoice userChoice);
+        String getFigureType();
     }
 }

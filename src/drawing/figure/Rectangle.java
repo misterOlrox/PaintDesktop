@@ -14,6 +14,6 @@ public class Rectangle extends Polygon {
      * @param rightBottom
      */
     public Rectangle(Graphics graphics, Color lineColor, Color filling, Point refPoint, Point[] points) {
-        super(graphics, lineColor, filling, refPoint, points);
+        super();
     }
 }

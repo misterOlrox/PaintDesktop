@@ -11,7 +11,7 @@ import java.awt.Graphics;
 public class Ray extends Segment {
 
     public Ray(Graphics graphics, Color lineColor, Point refPoint, Point guidePoint) {
-        super(graphics, lineColor, refPoint, guidePoint);
+        super();
     }
 
     public void draw() {

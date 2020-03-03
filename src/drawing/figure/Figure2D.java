@@ -12,6 +12,10 @@ public abstract class Figure2D extends Figure {
 
     private Color filling;
 
+    public Figure2D() {
+
+    }
+
     public Figure2D(Graphics graphics, Color lineColor, Color filling, Point refPoint) {
         super(graphics, lineColor, refPoint);
         this.filling = filling;

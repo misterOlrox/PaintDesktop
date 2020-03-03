@@ -13,4 +13,8 @@ public abstract class Figure1D extends Figure {
     public Figure1D(Graphics graphics, Color lineColor, Point refPoint) {
         super(graphics, lineColor, refPoint);
     }
+
+    public Figure1D() {
+        super();
+    }
 }

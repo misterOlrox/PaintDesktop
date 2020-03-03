@@ -11,6 +11,6 @@ import java.awt.Graphics;
 public class Rhomb extends Polygon {
 
     public Rhomb(Graphics graphics, Color lineColor, Color filling, Point refPoint, Point[] points) {
-        super(graphics, lineColor, filling, refPoint, points);
+        super();
     }
 }

@@ -10,7 +10,7 @@ import java.awt.Graphics;
  */
 public class Triangle extends Polygon {
 
-    public Triangle(Graphics graphics, Color lineColor, Color filling, Point refPoint, Point[] points) {
-        super(graphics, lineColor, filling, refPoint, points);
+    protected Triangle(){
+        super();
     }
 }

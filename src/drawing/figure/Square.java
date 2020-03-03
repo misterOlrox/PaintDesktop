@@ -11,6 +11,6 @@ import java.awt.Graphics;
 public class Square extends SymmetricPolygon {
 
     public Square(Graphics graphics, Color lineColor, Color filling, Point refPoint, Point[] points, int sidesNumber) {
-        super(graphics, lineColor, filling, refPoint, points, sidesNumber);
+        super();
     }
 }
