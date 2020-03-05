@@ -10,18 +10,42 @@ import java.awt.Graphics;
  */
 public abstract class Figure2D extends Figure {
 
-    private Color filling;
+    private Color fillingColor;
 
-    public Figure2D() {
-
+    protected Figure2D() {
+        super();
     }
 
-    public Figure2D(Graphics graphics, Color lineColor, Color filling, Point refPoint) {
+    protected Figure2D(Graphics graphics, Color lineColor, Point refPoint, Color fillingColor) {
         super(graphics, lineColor, refPoint);
-        this.filling = filling;
+        this.fillingColor = fillingColor;
     }
 
-    public Color getFilling() {
-        return filling;
+    public Color getFillingColor() {
+        return fillingColor;
+    }
+
+    public void setFillingColor(Color fillingColor) {
+        this.fillingColor = fillingColor;
+    }
+
+    public abstract static class Builder extends Figure.Builder {
+        private Color fillingColor;
+
+        @Override
+        public Figure.Builder setFillingColor(Color fillingColor) {
+            this.fillingColor = fillingColor;
+            return this;
+        }
+
+        @Override
+        public Color getFillingColor() {
+            return fillingColor;
+        }
+
+        @Override
+        public boolean isReadyForBuild() {
+            return super.isReadyForBuild() && fillingColor != null;
+        }
     }
 }

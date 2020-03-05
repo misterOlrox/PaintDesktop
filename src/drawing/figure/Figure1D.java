@@ -10,11 +10,15 @@ import java.awt.Graphics;
  */
 public abstract class Figure1D extends Figure {
 
+    protected Figure1D() {
+        super();
+    }
+
     public Figure1D(Graphics graphics, Color lineColor, Point refPoint) {
         super(graphics, lineColor, refPoint);
     }
 
-    public Figure1D() {
-        super();
+    public static abstract class Builder extends Figure.Builder {
+
     }
 }

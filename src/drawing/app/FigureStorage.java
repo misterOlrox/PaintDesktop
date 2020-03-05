@@ -24,4 +24,11 @@ public class FigureStorage {
         return new ArrayList<>(figures);
     }
 
+    public Figure getLast() {
+        if (figures.isEmpty()) {
+            return null;
+        } else {
+            return figures.get(figures.size() - 1);
+        }
+    }
 }

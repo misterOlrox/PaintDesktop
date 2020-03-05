@@ -10,7 +10,4 @@ import java.awt.Graphics;
  */
 public class Triangle extends Polygon {
 
-    protected Triangle(){
-        super();
-    }
 }

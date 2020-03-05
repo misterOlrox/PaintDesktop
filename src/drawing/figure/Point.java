@@ -17,4 +17,9 @@ public class Point {
     public int getY() {
         return y;
     }
+
+    public boolean isPointsEqual(Point other) {
+        return Math.abs(getX() - other.getX()) <= 10
+                && Math.abs(getY() - other.getY()) <= 10;
+    }
 }

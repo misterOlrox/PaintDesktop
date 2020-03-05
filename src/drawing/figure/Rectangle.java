@@ -9,11 +9,5 @@ import java.awt.Graphics;
  * @created 01-мар-2020 13:40:34
  */
 public class Rectangle extends Polygon {
-    /**
-     * @param leftTop
-     * @param rightBottom
-     */
-    public Rectangle(Graphics graphics, Color lineColor, Color filling, Point refPoint, Point[] points) {
-        super();
-    }
+
 }

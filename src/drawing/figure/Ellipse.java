@@ -12,11 +12,6 @@ public class Ellipse extends Figure2D {
 
     private Point peripheralPoint;
 
-    public Ellipse(Graphics graphics, Color lineColor, Color filling, Point refPoint, Point peripheralPoint) {
-        super(graphics, lineColor, filling, refPoint);
-        this.peripheralPoint = peripheralPoint;
-    }
-
     public void draw() {
 
     }

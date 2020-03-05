@@ -1,6 +1,7 @@
 package drawing.app;
 
 import drawing.figure.Figure;
+import drawing.figure.Point;
 import drawing.figure.Polygon;
 import drawing.figure.Segment;
 
@@ -14,7 +15,6 @@ import javax.swing.WindowConstants;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
@@ -28,17 +28,14 @@ public class MainFrame extends JFrame {
     private JButton fillingColorButton;
     private JPanel figureButtons;
     private Color lineColor = Color.RED;
-    private Color fillingColor = Color.WHITE;
+    private Color fillingColor = Color.CYAN;
     private FigureStorage figureStorage = new FigureStorage();
     private ButtonGroup buttonGroup;
-    private UserChoice userChoice = new UserChoiceImpl();
     private String selectedFigureType;
-    private MouseListener defaultMouseListener = new DefaultMouseAdapter();
 
-    private FigureFactory figureFactory = new FigureFactory(
-            new Segment.FactoryMethod(),
-            new Polygon.FactoryMethod()
-    );
+    private Figure.Builder currentBuilder;
+
+    private FigureBuilders builders = new FigureBuilders();
 
     public MainFrame() {
         super("MyPaint");
@@ -47,8 +44,8 @@ public class MainFrame extends JFrame {
         setMinimumSize(new Dimension(500, 500));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        addMouseListener(defaultMouseListener);
-        addMouseMotionListener(new PaintMouseMotionAdapter());
+        addMouseListener(new DefaultMouseListener());
+        addMouseMotionListener(new DefaultMouseMotionAdapter());
 
         lineColorButton.setBackground(lineColor);
         lineColorButton.addActionListener(e -> {
@@ -64,43 +61,110 @@ public class MainFrame extends JFrame {
 
         buttonGroup = new ButtonGroup();
 
-        for(String figureType : figureFactory.getAvailableTypes()) {
+        for(String figureType : builders.getAvailableTypes()) {
             JRadioButton button = new JRadioButton(figureType);
             buttonGroup.add(button);
             figureButtons.add(button);
-            button.addActionListener(x -> selectedFigureType = figureType);
+            button.addActionListener(
+                    x -> {
+                        selectedFigureType = figureType;
+                        inProgress = false;
+                    }
+            );
+            button.setSelected(true);
+            selectedFigureType = figureType;
         }
 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
     }
 
-    private class DefaultMouseAdapter extends MouseAdapter {
+    private class DefaultMouseMotionAdapter extends MouseMotionAdapter {
         @Override
-        public void mousePressed(MouseEvent e) {
-            Graphics g = getGraphics();
-            g.setColor(lineColor);
-
-            Figure newFigure = figureFactory.create(selectedFigureType, userChoice);
-
-            //Figure segment = new Segment(g, lineColor, new Point(e.getX(), e.getY()), new Point(e.getX()+5, e.getY() + 5));
-
-            figureStorage.add(newFigure);
-            newFigure.draw();
+        public void mouseMoved(MouseEvent e) {
+//            super.mouseMoved(e);
+//            userChoice.setGraphics(getGraphics());
+//            userChoice.setLastPoint(new Point(e.getX(), e.getY()));
+//
+//            if (figureInProcess != null) {
+//                figureInProcess.preUpdate(userChoice.getLastPoint());
+//                repaint();
+//            }
         }
     }
 
-    private class PaintMouseMotionAdapter extends MouseMotionAdapter {
-        public void mouseDragged(MouseEvent e) {
-//            Graphics g = getGraphics();
-//            g.setColor(lineColor);
-//
-//            Figure newFigure = figureFactory.create(selectedFigureType, userChoice);
-//
-//            //Figure segment = new Segment(g, lineColor, new Point(e.getX(), e.getY()), new Point(e.getX()+5, e.getY() + 5));
-//
-//            figureStorage.add(newFigure);
-//            newFigure.draw();
+    private boolean inProgress = false;
+    private Point lastPoint;
+
+    public void drawPoint(Point point) {
+        getGraphics().drawOval(
+                point.getX() - 5,
+                point.getY() - 5,
+                10,
+                10
+                );
+    }
+
+    private class DefaultMouseListener implements MouseListener {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            Point currentPoint = new Point(e.getX(), e.getY());
+            drawPoint(currentPoint);
+
+            if (!inProgress) {
+                currentBuilder = builders.get(selectedFigureType);
+                currentBuilder.setGraphics(getGraphics());
+                currentBuilder.setLineColor(lineColorButton.getBackground());
+                currentBuilder.setFillingColor(fillingColorButton.getBackground());
+                currentBuilder.setRefPoint(currentPoint);
+                lastPoint = currentPoint;
+                inProgress = true;
+            } else {
+                if (currentBuilder.needsMorePoints()) {
+                    currentBuilder.addPoint(currentPoint);
+                    if (currentBuilder.isReadyForBuild()) {
+                        Figure newFigure = currentBuilder.build();
+                        figureStorage.add(newFigure);
+                        newFigure.draw();
+                        inProgress = false;
+                        lastPoint = currentPoint;
+                        return;
+                    }
+//                    if (currentBuilder.isReadyForBuild() && currentBuilder.needsMorePoints()) {
+//                        if (isPointsEqual(currentPoint)) {
+//                        Figure newFigure = currentBuilder.build();
+//                        figureStorage.add(newFigure);
+//                        newFigure.draw();
+//                        inProgress = false;
+//                        lastPoint = currentPoint;
+//                        return;
+//                        } else {
+//                            currentBuilder.addPoint(currentPoint);
+//                            lastPoint = currentPoint;
+//                        }
+//                    }
+                }
+            }
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
         }
     }
 
