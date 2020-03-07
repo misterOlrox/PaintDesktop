@@ -14,13 +14,14 @@ public class PolyLine extends Figure1D {
     public Segment m_Segment;
 
     public PolyLine(Graphics graphics, Color lineColor, Point refPoint, Segment[] segments, Segment m_Segment) {
-        super(graphics, lineColor, refPoint);
+        super(refPoint, lineColor);
         this.segments = segments;
         this.m_Segment = m_Segment;
     }
 
-    public void draw() {
-
+    @Override
+    public void draw(Graphics graphics) {
+        
     }
 
     /**

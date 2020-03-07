@@ -10,16 +10,17 @@ import java.util.stream.Collectors;
 
 public class FigureBuilders {
     private Map<String, Integer> names;
+
     {
         names = new HashMap<>();
-        for(FigureBuilderType type : FigureBuilderType.values()) {
+        for (FigureBuilderType type : FigureBuilderType.values()) {
             names.put(type.getName(), type.ordinal());
         }
     }
 
     public Figure.Builder get(String name) {
         int order = names.get(name);
-        return FigureBuilderType.values()[order].getBuilderConsumer().get();
+        return FigureBuilderType.values()[order].getBuilderSupplier().get();
     }
 
     public List<String> getAvailableTypes() {

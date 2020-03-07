@@ -1,12 +1,8 @@
 package drawing.figure;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 
-/**
- * @author vitam
- * @version 1.0
- * @created 01-мар-2020 13:40:34
- */
 public class Polygon extends Figure2D {
 
     private ArrayList<Point> points;
@@ -15,13 +11,14 @@ public class Polygon extends Figure2D {
         super();
     }
 
-    public void draw() {
+    @Override
+    public void draw(Graphics graphics) {
         int[] pointsX = new int[points.size()];
         int[] pointsY = new int[points.size()];
 
         if (points.size() == 0) {
-            getGraphics().setColor(getLineColor());
-            getGraphics().drawLine(
+            graphics.setColor(getLineColor());
+            graphics.drawLine(
                     getLocation().getX(), getLocation().getY(),
                     getLocation().getX() + 1, getLocation().getY() + 1
             );
@@ -38,15 +35,12 @@ public class Polygon extends Figure2D {
             current = next;
         }
 
-        getGraphics().setColor(getFillingColor());
-        getGraphics().fillPolygon(pointsX, pointsY, points.size());
-        getGraphics().setColor(getLineColor());
-        getGraphics().drawPolygon(pointsX, pointsY, points.size());
+        graphics.setColor(getFillingColor());
+        graphics.fillPolygon(pointsX, pointsY, points.size());
+        graphics.setColor(getLineColor());
+        graphics.drawPolygon(pointsX, pointsY, points.size());
     }
 
-    /**
-     * @param point
-     */
     public void move(Point point) {
         int xChange = getLocation().getX() - point.getX();
         int yChange = getLocation().getY() - point.getY();
@@ -58,7 +52,7 @@ public class Polygon extends Figure2D {
     }
 
     public ArrayList<Point> getPoints() {
-        return points;
+        return new ArrayList<>(points);
     }
 
     public void setPoints(ArrayList<Point> points) {
@@ -91,7 +85,6 @@ public class Polygon extends Figure2D {
         @Override
         public Figure build() {
             Polygon polygon = new Polygon();
-            polygon.setGraphics(getGraphics());
             polygon.setLineColor(getLineColor());
             polygon.setRefPoint(getRefPoint());
             polygon.setFillingColor(getFillingColor());

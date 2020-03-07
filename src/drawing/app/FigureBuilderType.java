@@ -17,18 +17,18 @@ public enum FigureBuilderType {
 
 
     private String name;
-    private Supplier<Figure.Builder> builderConsumer;
+    private Supplier<Figure.Builder> builderSupplier;
 
-    FigureBuilderType(String name, Supplier<Figure.Builder> builderConsumer) {
+    FigureBuilderType(String name, Supplier<Figure.Builder> builderSupplier) {
         this.name = name;
-        this.builderConsumer = builderConsumer;
+        this.builderSupplier = builderSupplier;
     }
 
     public String getName() {
         return name;
     }
 
-    public Supplier<Figure.Builder> getBuilderConsumer() {
-        return builderConsumer;
+    public Supplier<Figure.Builder> getBuilderSupplier() {
+        return builderSupplier;
     }
 }

@@ -16,14 +16,15 @@ public class Segment extends Figure1D {
         super();
     }
 
-    protected Segment(Graphics graphics, Color lineColor, Point refPoint, Point guidePoint) {
-        super(graphics, lineColor, refPoint);
+    protected Segment(Point refPoint, Point guidePoint, Color lineColor) {
+        super(refPoint, lineColor);
         this.guidePoint = guidePoint;
     }
 
-    public void draw() {
-        getGraphics().setColor(getLineColor());
-        getGraphics().drawLine(
+    @Override
+    public void draw(Graphics graphics) {
+        graphics.setColor(getLineColor());
+        graphics.drawLine(
                 getLocation().getX(), getLocation().getY(),
                 guidePoint.getX(), guidePoint.getY()
         );
@@ -49,10 +50,6 @@ public class Segment extends Figure1D {
 
         public Builder() {}
 
-        public static Figure.Builder newBuilder() {
-            return new Builder();
-        }
-
         @Override
         public Figure.Builder addPoint(Point point) {
             this.guidePoint = point;
@@ -71,13 +68,11 @@ public class Segment extends Figure1D {
 
         @Override
         public Figure build() {
-            Segment segment = new Segment();
-            segment.setRefPoint(getRefPoint());
-            segment.setGraphics(getGraphics());
-            segment.setLineColor(getLineColor());
-            segment.setGuidePoint(guidePoint);
-
-            return segment;
+            return new Segment(
+                    getRefPoint(),
+                    guidePoint,
+                    getLineColor()
+            );
         }
     }
 }

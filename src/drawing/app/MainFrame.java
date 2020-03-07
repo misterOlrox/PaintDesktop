@@ -11,12 +11,10 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.ItemEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -32,9 +30,10 @@ public class MainFrame extends JFrame {
     private JPanel figureButtons;
     private JCheckBox moveModeCheckBox;
     private JComboBox figuresComboBox;
+    private JPanel drawPanel;
+
     private Color lineColor = Color.RED;
     private Color fillingColor = Color.CYAN;
-    private FigureStorage figureStorage = new FigureStorage();
     private ButtonGroup buttonGroup;
     private String selectedFigureType;
 
@@ -46,6 +45,7 @@ public class MainFrame extends JFrame {
 
     private Figure.Builder currentBuilder;
 
+    private FigureStorage figureStorage = new FigureStorage();
     private FigureBuilders builders = new FigureBuilders();
 
     public MainFrame() {
@@ -55,8 +55,7 @@ public class MainFrame extends JFrame {
         setMinimumSize(new Dimension(500, 500));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        addMouseListener(paintMouseListener);
-
+        drawPanel.addMouseListener(paintMouseListener);
 
         lineColorButton.setBackground(lineColor);
         lineColorButton.addActionListener(e -> {
@@ -96,12 +95,12 @@ public class MainFrame extends JFrame {
                 for (Figure figure : figureStorage.getAll()) {
                     figuresComboBox.addItem(figure);
                 }
-                removeMouseListener(paintMouseListener);
+                drawPanel.removeMouseListener(paintMouseListener);
 
             } else {
                 figuresComboBox.setEnabled(false);
-                addMouseListener(paintMouseListener);
-                removeMouseMotionListener(moveMotionAdapter);
+                drawPanel.addMouseListener(paintMouseListener);
+                drawPanel.removeMouseMotionListener(moveMotionAdapter);
             }
         });
 
@@ -115,7 +114,7 @@ public class MainFrame extends JFrame {
 
                         movePoint = selectedFigure.getLocation();
                         MainFrame.this.repaint();
-                        addMouseMotionListener(moveMotionAdapter);
+                        drawPanel.addMouseMotionListener(moveMotionAdapter);
                     }
                 }
         );
@@ -125,10 +124,9 @@ public class MainFrame extends JFrame {
     }
 
     private boolean inProgress = false;
-    private Point lastPoint;
 
     public void drawPoint(Point point, Color color, boolean fill) {
-        Graphics g = getGraphics();
+        Graphics g = drawPanel.getGraphics();
         g.setColor(color);
         if (fill) {
             g.fillOval(point.getX() - 5, point.getY() - 5, 10, 10);
@@ -147,12 +145,10 @@ public class MainFrame extends JFrame {
                 currentBuilder = builders.get(selectedFigureType);
 
                 currentBuilder
-                        .setGraphics(getGraphics())
                         .setLineColor(lineColorButton.getBackground())
                         .setFillingColor(fillingColorButton.getBackground())
                         .setRefPoint(currentPoint);
 
-                lastPoint = currentPoint;
                 inProgress = true;
             } else {
                 if (currentBuilder == null) {
@@ -165,10 +161,9 @@ public class MainFrame extends JFrame {
                 if (currentBuilder.isReadyForBuild()) {
                     Figure newFigure = currentBuilder.build();
                     figureStorage.add(newFigure);
-                    newFigure.draw();
+                    newFigure.draw(drawPanel.getGraphics());
                     inProgress = false;
                 }
-                lastPoint = currentPoint;
             }
         }
 
@@ -195,23 +190,13 @@ public class MainFrame extends JFrame {
             super.mouseDragged(e);
 
             if (!moveModeCheckBox.isSelected()) {
-                removeMouseMotionListener(this);
+                drawPanel.removeMouseMotionListener(this);
                 return;
             }
             Point clickPoint = new Point(e.getX(), e.getY());
             movePoint = clickPoint;
             movingFigure.move(movePoint);
             repaint();
-        }
-    }
-
-    public void paint(Graphics g) {
-        super.paint(g);
-        for (Figure figure : figureStorage.getAll()) {
-            figure.draw();
-        }
-        if (moveModeCheckBox.isSelected()) {
-            drawPoint(movePoint, Color.RED, true);
         }
     }
 
@@ -222,5 +207,20 @@ public class MainFrame extends JFrame {
                 System.exit(0);
             }
         });
+    }
+
+    private void createUIComponents() {
+        drawPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                for (Figure figure : figureStorage.getAll()) {
+                    figure.draw(g);
+                }
+                if (moveModeCheckBox.isSelected()) {
+                    drawPoint(movePoint, Color.RED, true);
+                }
+            }
+        };
     }
 }

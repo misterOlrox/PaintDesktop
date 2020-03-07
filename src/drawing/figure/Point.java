@@ -1,5 +1,8 @@
 package drawing.figure;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 public class Point {
 
     private int x;

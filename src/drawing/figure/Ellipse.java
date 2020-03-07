@@ -1,15 +1,13 @@
 package drawing.figure;
 
-/**
- * @author vitam
- * @version 1.0
- * @created 01-мар-2020 13:40:34
- */
+import java.awt.Graphics;
+
 public class Ellipse extends Figure2D {
 
     private Point peripheralPoint;
 
-    public void draw() {
+    @Override
+    public void draw(Graphics graphics) {
         int x1 = getLocation().getX();
         int x2 = peripheralPoint.getX();
         int y1 = getLocation().getY();
@@ -20,10 +18,10 @@ public class Ellipse extends Figure2D {
         int width = Math.abs(x1 - x2);
         int height = Math.abs(y1 - y2);
 
-        getGraphics().setColor(getFillingColor());
-        getGraphics().fillOval(xLeftUpperCorner, yLeftUpperCorner, width, height);
-        getGraphics().setColor(getLineColor());
-        getGraphics().drawOval(xLeftUpperCorner, yLeftUpperCorner, width, height);
+        graphics.setColor(getFillingColor());
+        graphics.fillOval(xLeftUpperCorner, yLeftUpperCorner, width, height);
+        graphics.setColor(getLineColor());
+        graphics.drawOval(xLeftUpperCorner, yLeftUpperCorner, width, height);
     }
 
     public void move(Point point) {
@@ -63,7 +61,6 @@ public class Ellipse extends Figure2D {
         @Override
         public Figure build() {
             Ellipse ellipse = new Ellipse();
-            ellipse.setGraphics(getGraphics());
             ellipse.setLineColor(getLineColor());
             ellipse.setRefPoint(getRefPoint());
             ellipse.setFillingColor(getFillingColor());

@@ -1,10 +1,5 @@
 package drawing.figure;
 
-/**
- * @author vitam
- * @version 1.0
- * @created 01-мар-2020 13:40:34
- */
 public class Circle extends Ellipse {
 
     public static class Builder extends Ellipse.Builder {
@@ -18,7 +13,6 @@ public class Circle extends Ellipse {
             );
 
             Ellipse circle = new Circle();
-            circle.setGraphics(getGraphics());
             circle.setLineColor(getLineColor());
             circle.setRefPoint(getRefPoint());
             circle.setFillingColor(getFillingColor());

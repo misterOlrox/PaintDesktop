@@ -3,27 +3,20 @@ package drawing.figure;
 import java.awt.Color;
 import java.awt.Graphics;
 
-/**
- * @author vitam
- * @version 1.0
- * @created 01-мар-2020 13:40:34
- */
 public abstract class Figure {
 
     private Color lineColor;
     private Point refPoint;
-    private Graphics graphics;
 
     protected Figure() {
     }
 
-    public Figure(Graphics graphics, Color lineColor, Point refPoint) {
+    public Figure(Point refPoint, Color lineColor) {
         this.lineColor = lineColor;
         this.refPoint = refPoint;
-        this.graphics = graphics;
     }
 
-    public abstract void draw();
+    public abstract void draw(Graphics graphics);
 
     public Point getLocation() {
         return refPoint;
@@ -37,10 +30,6 @@ public abstract class Figure {
         return lineColor;
     }
 
-    public Graphics getGraphics() {
-        return graphics;
-    }
-
     public void setLineColor(Color lineColor) {
         this.lineColor = lineColor;
     }
@@ -49,25 +38,16 @@ public abstract class Figure {
         this.refPoint = refPoint;
     }
 
-    public void setGraphics(Graphics graphics) {
-        this.graphics = graphics;
-    }
-
 
     public abstract static class Builder {
         private Color lineColor;
         private Point refPoint;
-        private Graphics graphics;
 
-        protected Builder() {}
+        protected Builder() {
+        }
 
         public Builder setRefPoint(Point point) {
             this.refPoint = point;
-            return this;
-        }
-
-        public Builder setGraphics(Graphics graphics) {
-            this.graphics = graphics;
             return this;
         }
 
@@ -86,9 +66,7 @@ public abstract class Figure {
         public abstract boolean needsMorePoints();
 
         public boolean isReadyForBuild() {
-            return lineColor != null
-                    && refPoint != null
-                    && graphics != null;
+            return lineColor != null && refPoint != null;
         }
 
         public abstract Figure build();
@@ -99,10 +77,6 @@ public abstract class Figure {
 
         public Point getRefPoint() {
             return refPoint;
-        }
-
-        public Graphics getGraphics() {
-            return graphics;
         }
 
         public Color getFillingColor() {

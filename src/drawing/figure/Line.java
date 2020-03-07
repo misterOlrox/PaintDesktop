@@ -10,11 +10,12 @@ import java.awt.Graphics;
  */
 public class Line extends Ray {
 
-    public Line(Graphics graphics, Color lineColor, Point refPoint, Point guidePoint) {
-        super(graphics, lineColor, refPoint, guidePoint);
+    public Line(Point refPoint, Point guidePoint, Color lineColor) {
+        super(refPoint, guidePoint, lineColor);
     }
 
-    public void draw() {
+    @Override
+    public void draw(Graphics graphics) {
 
     }
 }

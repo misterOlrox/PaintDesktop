@@ -10,11 +10,16 @@ import java.awt.Graphics;
  */
 public class Ray extends Segment {
 
-    public Ray(Graphics graphics, Color lineColor, Point refPoint, Point guidePoint) {
-        super(graphics, lineColor, refPoint, guidePoint);
+    public Ray(Point refPoint, Point guidePoint, Color lineColor) {
+        super(refPoint, guidePoint, lineColor);
     }
 
-    public void draw() {
-
+    @Override
+    public void draw(Graphics graphics) {
+        graphics.setColor(getLineColor());
+        graphics.drawLine(
+                getLocation().getX(), getLocation().getY(),
+                getGuidePoint().getX(), getGuidePoint().getY()
+        );
     }
 }

@@ -1,7 +1,6 @@
 package drawing.figure;
 
 import java.awt.Color;
-import java.awt.Graphics;
 
 /**
  * @author vitam
@@ -14,8 +13,8 @@ public abstract class Figure1D extends Figure {
         super();
     }
 
-    public Figure1D(Graphics graphics, Color lineColor, Point refPoint) {
-        super(graphics, lineColor, refPoint);
+    protected Figure1D(Point refPoint, Color lineColor) {
+        super(refPoint, lineColor);
     }
 
     public static abstract class Builder extends Figure.Builder {
