@@ -31,7 +31,6 @@ public abstract class Figure {
 
     public void move(Point point) {
         refPoint = point;
-        draw();
     }
 
     public Color getLineColor() {

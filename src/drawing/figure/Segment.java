@@ -30,7 +30,10 @@ public class Segment extends Figure1D {
     }
 
     public void move(Point point) {
-
+        int xChange = getLocation().getX() - point.getX();
+        int yChange = getLocation().getY() - point.getY();
+        setRefPoint(point);
+        getGuidePoint().move(xChange, yChange);
     }
 
     public Point getGuidePoint() {

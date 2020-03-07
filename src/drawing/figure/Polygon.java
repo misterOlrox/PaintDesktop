@@ -48,7 +48,13 @@ public class Polygon extends Figure2D {
      * @param point
      */
     public void move(Point point) {
+        int xChange = getLocation().getX() - point.getX();
+        int yChange = getLocation().getY() - point.getY();
+        setRefPoint(point);
 
+        for(Point figurePoints : points) {
+            figurePoints.move(xChange, yChange);
+        }
     }
 
     public ArrayList<Point> getPoints() {
@@ -78,7 +84,7 @@ public class Polygon extends Figure2D {
 
         @Override
         public boolean isReadyForBuild() {
-            return super.isReadyForBuild() && getRefPoint().isPointsEqual(points.get(points.size() - 1));
+            return super.isReadyForBuild() && getRefPoint().isCloseTo(points.get(points.size() - 1));
         }
 
         @Override

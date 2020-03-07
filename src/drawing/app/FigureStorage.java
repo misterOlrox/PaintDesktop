@@ -31,4 +31,8 @@ public class FigureStorage {
             return figures.get(figures.size() - 1);
         }
     }
+
+    public boolean isEmpty() {
+        return figures.isEmpty();
+    }
 }

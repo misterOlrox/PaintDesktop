@@ -18,8 +18,13 @@ public class Point {
         return y;
     }
 
-    public boolean isPointsEqual(Point other) {
+    public boolean isCloseTo(Point other) {
         return Math.abs(getX() - other.getX()) <= 10
                 && Math.abs(getY() - other.getY()) <= 10;
+    }
+
+    void move(int xChange, int yChange) {
+        x -= xChange;
+        y -= yChange;
     }
 }
