@@ -53,6 +53,7 @@ public abstract class Figure {
         this.graphics = graphics;
     }
 
+
     public abstract static class Builder {
         private Color lineColor;
         private Point refPoint;

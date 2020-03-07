@@ -53,7 +53,7 @@ public class Polygon extends Figure2D {
         setRefPoint(point);
 
         for(Point figurePoints : points) {
-            figurePoints.move(xChange, yChange);
+            figurePoints.subtract(xChange, yChange);
         }
     }
 
@@ -84,7 +84,8 @@ public class Polygon extends Figure2D {
 
         @Override
         public boolean isReadyForBuild() {
-            return super.isReadyForBuild() && getRefPoint().isCloseTo(points.get(points.size() - 1));
+            return super.isReadyForBuild()
+                    && getRefPoint().isCloseTo(points.get(points.size() - 1));
         }
 
         @Override

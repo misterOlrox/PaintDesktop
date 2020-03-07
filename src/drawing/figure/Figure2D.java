@@ -16,11 +16,6 @@ public abstract class Figure2D extends Figure {
         super();
     }
 
-    protected Figure2D(Graphics graphics, Color lineColor, Point refPoint, Color fillingColor) {
-        super(graphics, lineColor, refPoint);
-        this.fillingColor = fillingColor;
-    }
-
     public Color getFillingColor() {
         return fillingColor;
     }

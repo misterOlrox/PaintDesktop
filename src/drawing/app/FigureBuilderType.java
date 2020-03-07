@@ -1,5 +1,7 @@
 package drawing.app;
 
+import drawing.figure.Circle;
+import drawing.figure.Ellipse;
 import drawing.figure.Figure;
 import drawing.figure.Polygon;
 import drawing.figure.Segment;
@@ -9,7 +11,9 @@ import java.util.function.Supplier;
 public enum FigureBuilderType {
 
     SEGMENT("Segment", Segment.Builder::new),
-    POLYGON("Polygon", Polygon.Builder::new);
+    POLYGON("Polygon", Polygon.Builder::new),
+    ELLIPSE("Ellipse", Ellipse.Builder::new),
+    CIRCLE("Circle", Circle.Builder::new);
 
 
     private String name;

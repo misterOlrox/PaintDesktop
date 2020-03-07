@@ -23,8 +23,17 @@ public class Point {
                 && Math.abs(getY() - other.getY()) <= 10;
     }
 
-    void move(int xChange, int yChange) {
+    void subtract(int xChange, int yChange) {
         x -= xChange;
         y -= yChange;
+    }
+
+    void move(int newX, int newY) {
+        x = newX;
+        y = newY;
+    }
+
+    public double distanceTo(Point point) {
+        return Math.sqrt((x - point.x)*(x - point.x) + (y - point.y)*(y-point.y));
     }
 }

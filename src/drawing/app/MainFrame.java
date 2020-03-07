@@ -194,6 +194,10 @@ public class MainFrame extends JFrame {
         public void mouseDragged(MouseEvent e) {
             super.mouseDragged(e);
 
+            if (!moveModeCheckBox.isSelected()) {
+                removeMouseMotionListener(this);
+                return;
+            }
             Point clickPoint = new Point(e.getX(), e.getY());
             movePoint = clickPoint;
             movingFigure.move(movePoint);

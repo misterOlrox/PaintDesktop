@@ -33,7 +33,7 @@ public class Segment extends Figure1D {
         int xChange = getLocation().getX() - point.getX();
         int yChange = getLocation().getY() - point.getY();
         setRefPoint(point);
-        getGuidePoint().move(xChange, yChange);
+        getGuidePoint().subtract(xChange, yChange);
     }
 
     public Point getGuidePoint() {
@@ -61,7 +61,7 @@ public class Segment extends Figure1D {
 
         @Override
         public boolean needsMorePoints() {
-            return guidePoint == null;
+            return guidePoint == null || getRefPoint() == null;
         }
 
         @Override
