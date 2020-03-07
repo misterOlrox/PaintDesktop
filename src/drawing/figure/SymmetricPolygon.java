@@ -1,7 +1,7 @@
 package drawing.figure;
 
 import java.awt.Color;
-import java.awt.Graphics;
+import java.util.ArrayList;
 
 /**
  * @author vitam
@@ -12,7 +12,20 @@ public class SymmetricPolygon extends Polygon {
 
     private int sidesNumber;
 
+    protected SymmetricPolygon() {
+        super();
+    }
+
+    protected SymmetricPolygon(Point refPoint,
+                            Color lineColor,
+                            Color fillingColor,
+                            ArrayList<Point> points,
+                            int sidesNumber) {
+        super(refPoint, lineColor, fillingColor, points);
+        this.sidesNumber = sidesNumber;
+    }
+
     public int getSidesNumber() {
-        return 0;
+        return sidesNumber;
     }
 }

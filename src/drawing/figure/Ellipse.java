@@ -1,10 +1,20 @@
 package drawing.figure;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Ellipse extends Figure2D {
 
     private Point peripheralPoint;
+
+    protected Ellipse() {
+        super();
+    }
+
+    public Ellipse(Point refPoint, Color lineColor, Color fillingColor, Point peripheralPoint) {
+        super(refPoint, lineColor, fillingColor);
+        this.peripheralPoint = peripheralPoint;
+    }
 
     @Override
     public void draw(Graphics graphics) {
@@ -60,13 +70,12 @@ public class Ellipse extends Figure2D {
 
         @Override
         public Figure build() {
-            Ellipse ellipse = new Ellipse();
-            ellipse.setLineColor(getLineColor());
-            ellipse.setRefPoint(getRefPoint());
-            ellipse.setFillingColor(getFillingColor());
-            ellipse.peripheralPoint = peripheralPoint;
-
-            return ellipse;
+            return new Ellipse(
+                    getRefPoint(),
+                    getLineColor(),
+                    getFillingColor(),
+                    getPeripheralPoint()
+            );
         }
 
         public Point getPeripheralPoint() {

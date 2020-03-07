@@ -1,7 +1,7 @@
 package drawing.figure;
 
 import java.awt.Color;
-import java.awt.Graphics;
+import java.util.ArrayList;
 
 /**
  * @author vitam
@@ -10,4 +10,7 @@ import java.awt.Graphics;
  */
 public class Triangle extends Polygon {
 
+    public Triangle(Point refPoint, Color lineColor, Color fillingColor, ArrayList<Point> points) {
+        super(refPoint, lineColor, fillingColor, points);
+    }
 }

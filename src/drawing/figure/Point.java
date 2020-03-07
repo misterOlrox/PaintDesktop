@@ -1,8 +1,5 @@
 package drawing.figure;
 
-import java.awt.Color;
-import java.awt.Graphics;
-
 public class Point {
 
     private int x;
@@ -37,6 +34,6 @@ public class Point {
     }
 
     public double distanceTo(Point point) {
-        return Math.sqrt((x - point.x)*(x - point.x) + (y - point.y)*(y-point.y));
+        return Math.sqrt((x - point.x) * (x - point.x) + (y - point.y) * (y - point.y));
     }
 }

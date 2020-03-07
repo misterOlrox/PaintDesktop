@@ -1,24 +1,29 @@
 package drawing.figure;
 
+import java.awt.Color;
+
 public class Circle extends Ellipse {
+
+    public Circle(Point refPoint, Color lineColor, Color fillingColor, Point peripheralPoint) {
+        int radius = (int) refPoint.distanceTo(peripheralPoint);
+        refPoint.subtract(radius, radius);
+        peripheralPoint.move(refPoint.getX() + 2 * radius, refPoint.getY() + 2 * radius);
+
+        this.setRefPoint(refPoint);
+        this.setPeripheralPoint(peripheralPoint);
+        this.setLineColor(lineColor);
+        this.setFillingColor(fillingColor);
+    }
 
     public static class Builder extends Ellipse.Builder {
         @Override
         public Figure build() {
-            int radius = (int) getRefPoint().distanceTo(getPeripheralPoint());
-            getRefPoint().subtract(radius, radius);
-            getPeripheralPoint().move(
-                    getRefPoint().getX() + 2*radius,
-                    getRefPoint().getY() + 2*radius
+            return new Circle(
+                    getRefPoint(),
+                    getLineColor(),
+                    getFillingColor(),
+                    getPeripheralPoint()
             );
-
-            Ellipse circle = new Circle();
-            circle.setLineColor(getLineColor());
-            circle.setRefPoint(getRefPoint());
-            circle.setFillingColor(getFillingColor());
-            circle.setPeripheralPoint(getPeripheralPoint());
-
-            return circle;
         }
     }
 }

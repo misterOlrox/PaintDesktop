@@ -1,7 +1,7 @@
 package drawing.figure;
 
 import java.awt.Color;
-import java.awt.Graphics;
+import java.util.ArrayList;
 
 /**
  * @author vitam
@@ -10,4 +10,7 @@ import java.awt.Graphics;
  */
 public class RegularTriangle extends SymmetricPolygon {
 
+    protected RegularTriangle(Point refPoint, Color lineColor, Color fillingColor, ArrayList<Point> points, int sidesNumber) {
+        super(refPoint, lineColor, fillingColor, points, sidesNumber);
+    }
 }

@@ -1,5 +1,6 @@
 package drawing.figure;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -9,6 +10,11 @@ public class Polygon extends Figure2D {
 
     protected Polygon() {
         super();
+    }
+
+    public Polygon(Point refPoint, Color lineColor, Color fillingColor, ArrayList<Point> points) {
+        super(refPoint, lineColor, fillingColor);
+        this.points = points;
     }
 
     @Override
@@ -84,13 +90,13 @@ public class Polygon extends Figure2D {
 
         @Override
         public Figure build() {
-            Polygon polygon = new Polygon();
-            polygon.setLineColor(getLineColor());
-            polygon.setRefPoint(getRefPoint());
-            polygon.setFillingColor(getFillingColor());
-            polygon.setPoints(points);
 
-            return polygon;
+            return new Polygon(
+                    getRefPoint(),
+                    getLineColor(),
+                    getFillingColor(),
+                    points
+            );
         }
     }
 }
