@@ -85,7 +85,8 @@ public class Polygon extends Figure2D {
         @Override
         public boolean isReadyForBuild() {
             return super.isReadyForBuild()
-                    && getRefPoint().isCloseTo(points.get(points.size() - 1));
+                    && (points.isEmpty()
+                        || getRefPoint().isCloseTo(points.get(points.size() - 1)));
         }
 
         @Override
@@ -97,6 +98,10 @@ public class Polygon extends Figure2D {
                     getFillingColor(),
                     points
             );
+        }
+
+        public ArrayList<Point> getPoints() {
+            return points;
         }
     }
 }
