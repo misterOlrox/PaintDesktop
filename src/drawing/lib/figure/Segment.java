@@ -73,5 +73,9 @@ public class Segment extends Figure1D {
                     getLineColor()
             );
         }
+
+        public Point getGuidePoint() {
+            return guidePoint;
+        }
     }
 }

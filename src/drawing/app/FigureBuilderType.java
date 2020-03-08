@@ -4,6 +4,7 @@ import drawing.lib.figure.Circle;
 import drawing.lib.figure.Ellipse;
 import drawing.lib.figure.Figure;
 import drawing.lib.figure.Polygon;
+import drawing.lib.figure.Ray;
 import drawing.lib.figure.Segment;
 import drawing.lib.figure.SymmetricPolygon;
 
@@ -12,6 +13,7 @@ import java.util.function.Supplier;
 public enum FigureBuilderType {
 
     SEGMENT("Segment", Segment.Builder::new),
+    RAY("Ray", Ray.Builder::new),
     POLYGON("Polygon", Polygon.Builder::new),
     ELLIPSE("Ellipse", Ellipse.Builder::new),
     CIRCLE("Circle", Circle.Builder::new),
