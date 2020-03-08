@@ -1,4 +1,4 @@
-package drawing.lib.figure.abstractbuilder;
+package drawing.lib.figure.builder;
 
 import drawing.lib.figure.Figure2D;
 import drawing.lib.figure.Point;

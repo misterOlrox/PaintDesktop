@@ -1,4 +1,4 @@
-package drawing.app;
+package drawing.lib.figure.builder;
 
 import drawing.lib.figure.Circle;
 import drawing.lib.figure.Ellipse;

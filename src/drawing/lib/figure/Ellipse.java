@@ -1,6 +1,6 @@
 package drawing.lib.figure;
 
-import drawing.lib.figure.abstractbuilder.TwoPointBuilder;
+import drawing.lib.figure.builder.TwoPointBuilder;
 
 import java.awt.Color;
 import java.awt.Graphics;
