@@ -33,7 +33,7 @@ public class Segment extends Figure1D {
     public void move(Point point) {
         int xChange = getLocation().getX() - point.getX();
         int yChange = getLocation().getY() - point.getY();
-        setRefPoint(point);
+        getLocation().subtract(xChange, yChange);
         getGuidePoint().subtract(xChange, yChange);
     }
 
@@ -48,7 +48,8 @@ public class Segment extends Figure1D {
     public static class Builder extends Figure1D.Builder {
         private Point guidePoint;
 
-        public Builder() {}
+        public Builder() {
+        }
 
         @Override
         public void addPoint(Point point) {

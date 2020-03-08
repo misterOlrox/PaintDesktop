@@ -4,6 +4,7 @@ import drawing.lib.figure.Circle;
 import drawing.lib.figure.Ellipse;
 import drawing.lib.figure.Figure;
 import drawing.lib.figure.Line;
+import drawing.lib.figure.PolyLine;
 import drawing.lib.figure.Polygon;
 import drawing.lib.figure.Ray;
 import drawing.lib.figure.Segment;
@@ -16,6 +17,7 @@ public enum FigureBuilderType {
     SEGMENT("Segment", Segment.Builder::new),
     RAY("Ray", Ray.Builder::new),
     LINE("Line", Line.Builder::new),
+    POLYLINE("Polyline", PolyLine.Builder::new),
     POLYGON("Polygon", Polygon.Builder::new),
     ELLIPSE("Ellipse", Ellipse.Builder::new),
     CIRCLE("Circle", Circle.Builder::new),
