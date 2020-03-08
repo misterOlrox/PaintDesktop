@@ -1,6 +1,6 @@
 package drawing.app;
 
-import drawing.figure.Figure;
+import drawing.lib.figure.Figure;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -20,7 +20,7 @@ public class FigureBuilders {
 
     public Figure.Builder get(String name) {
         int order = names.get(name);
-        return FigureBuilderType.values()[order].getBuilderSupplier().get();
+        return FigureBuilderType.values()[order].newBuilder();
     }
 
     public List<String> getAvailableTypes() {

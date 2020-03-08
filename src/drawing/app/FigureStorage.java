@@ -1,6 +1,6 @@
 package drawing.app;
 
-import drawing.figure.Figure;
+import drawing.lib.figure.Figure;
 
 import java.util.ArrayList;
 import java.util.List;

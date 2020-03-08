@@ -1,11 +1,11 @@
 package drawing.app;
 
-import drawing.figure.Circle;
-import drawing.figure.Ellipse;
-import drawing.figure.Figure;
-import drawing.figure.Polygon;
-import drawing.figure.Segment;
-import drawing.figure.SymmetricPolygon;
+import drawing.lib.figure.Circle;
+import drawing.lib.figure.Ellipse;
+import drawing.lib.figure.Figure;
+import drawing.lib.figure.Polygon;
+import drawing.lib.figure.Segment;
+import drawing.lib.figure.SymmetricPolygon;
 
 import java.util.function.Supplier;
 
@@ -30,7 +30,7 @@ public enum FigureBuilderType {
         return name;
     }
 
-    public Supplier<Figure.Builder> getBuilderSupplier() {
-        return builderSupplier;
+    public Figure.Builder newBuilder() {
+        return builderSupplier.get();
     }
 }

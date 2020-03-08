@@ -1,7 +1,7 @@
 package drawing.app;
 
-import drawing.figure.Figure;
-import drawing.figure.Point;
+import drawing.lib.figure.Figure;
+import drawing.lib.figure.Point;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;

@@ -1,4 +1,4 @@
-package drawing.app;
+package drawing.lib.dialog;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -6,6 +6,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.KeyStroke;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -20,7 +21,7 @@ public class SymmetricPolygonDialog extends JDialog {
     private Integer sideNumber;
 
     public SymmetricPolygonDialog() {
-        setTitle("Regular Polygon Dialog");
+        setTitle("Symmetric Polygon Dialog");
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -33,7 +34,7 @@ public class SymmetricPolygonDialog extends JDialog {
                 spinner.setValue(3);
                 sideNumber = 3;
             }
-            if (!(value >= 3 && value <=100)) {
+            if (value >= 3) {
                 spinner.setValue(value);
                 sideNumber = value;
             } else {
@@ -68,6 +69,10 @@ public class SymmetricPolygonDialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        setMinimumSize(new Dimension(400, 200));
+        setResizable(false);
+        setLocation(getBounds().width/2, getBounds().height/2);
     }
 
     private void onOK() {
@@ -80,7 +85,7 @@ public class SymmetricPolygonDialog extends JDialog {
         dispose();
     }
 
-    public Integer getSideNumber() {
+    public Integer getSidesNumber() {
         return sideNumber;
     }
 }

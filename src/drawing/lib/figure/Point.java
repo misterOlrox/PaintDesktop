@@ -1,4 +1,4 @@
-package drawing.figure;
+package drawing.lib.figure;
 
 public class Point {
 
@@ -8,6 +8,11 @@ public class Point {
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Point(Point source) {
+        this.x = source.x;
+        this.y = source.y;
     }
 
     public int getX() {
@@ -23,9 +28,11 @@ public class Point {
                 && Math.abs(getY() - other.getY()) <= 10;
     }
 
-    void subtract(int xChange, int yChange) {
+    Point subtract(int xChange, int yChange) {
         x -= xChange;
         y -= yChange;
+
+        return this;
     }
 
     void move(int newX, int newY) {
