@@ -24,4 +24,18 @@ public abstract class TwoPointBuilder extends Figure2D.Builder {
     public Point getPeripheralPoint() {
         return peripheralPoint;
     }
+
+    public Point getUpperLeftPoint() {
+        int xLeftUpperCorner = Math.min(getRefPoint().getX(), getPeripheralPoint().getX());
+        int yLeftUpperCorner = Math.min(getRefPoint().getY(), getPeripheralPoint().getY());
+
+        return new Point(xLeftUpperCorner, yLeftUpperCorner);
+    }
+
+    public Point getBottomRightPoint() {
+        int xRightBottomCorner = Math.max(getRefPoint().getX(), getPeripheralPoint().getX());
+        int yRightBottomCorner = Math.max(getRefPoint().getY(), getPeripheralPoint().getY());
+
+        return new Point(xRightBottomCorner, yRightBottomCorner);
+    }
 }

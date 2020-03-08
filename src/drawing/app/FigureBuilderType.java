@@ -8,6 +8,7 @@ import drawing.lib.figure.PolyLine;
 import drawing.lib.figure.Polygon;
 import drawing.lib.figure.Ray;
 import drawing.lib.figure.Rectangle;
+import drawing.lib.figure.Rhomb;
 import drawing.lib.figure.Segment;
 import drawing.lib.figure.SymmetricPolygon;
 
@@ -23,6 +24,7 @@ public enum FigureBuilderType {
     CIRCLE("Circle", Circle.Builder::new),
     POLYGON("Polygon", Polygon.Builder::new),
     RECTANGLE("Rectangle", Rectangle.Builder::new),
+    RHOMB("Rhomb", Rhomb.Builder::new),
     SYMMETRIC_POLYGON("Symmetric Polygon", SymmetricPolygon.Builder::new);
 
 

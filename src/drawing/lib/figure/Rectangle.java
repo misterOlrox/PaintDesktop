@@ -31,27 +31,11 @@ public class Rectangle extends Polygon {
     }
 
     public static class Builder extends TwoPointBuilder {
-
         @Override
         public Figure build() {
-            ArrayList<Point> points = new ArrayList<>();
-
-            int x1 = getRefPoint().getX();
-            int x2 = getPeripheralPoint().getX();
-            int y1 = getRefPoint().getY();
-            int y2 = getPeripheralPoint().getY();
-
-            int xLeftUpperCorner = Math.min(x1, x2);
-            int yLeftUpperCorner = Math.min(y1, y2);
-            int xRightBottomCorner = Math.max(x1, x2);
-            int yRightBottomCorner = Math.max(y1, y2);
-
-            getRefPoint().move(xLeftUpperCorner, yLeftUpperCorner);
-            getPeripheralPoint().move(xRightBottomCorner, yRightBottomCorner);
-
             return new Rectangle(
-                    getRefPoint(),
-                    getPeripheralPoint(),
+                    getUpperLeftPoint(),
+                    getBottomRightPoint(),
                     getLineColor(),
                     getFillingColor()
             );

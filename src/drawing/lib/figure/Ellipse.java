@@ -13,22 +13,21 @@ public class Ellipse extends Figure2D {
         super();
     }
 
-    public Ellipse(Point refPoint, Color lineColor, Color fillingColor, Point peripheralPoint) {
-        super(refPoint, lineColor, fillingColor);
-        this.peripheralPoint = peripheralPoint;
+    public Ellipse(Point upperLeftPoint,
+                   Point bottomRightPoint,
+                   Color lineColor,
+                   Color fillingColor) {
+
+        super(upperLeftPoint, lineColor, fillingColor);
+        this.peripheralPoint = bottomRightPoint;
     }
 
     @Override
     public void draw(Graphics graphics) {
-        int x1 = getLocation().getX();
-        int x2 = peripheralPoint.getX();
-        int y1 = getLocation().getY();
-        int y2 = peripheralPoint.getY();
-
-        int xLeftUpperCorner = Math.min(x1, x2);
-        int yLeftUpperCorner = Math.min(y1, y2);
-        int width = Math.abs(x1 - x2);
-        int height = Math.abs(y1 - y2);
+        int xLeftUpperCorner = getLocation().getX();
+        int yLeftUpperCorner = getLocation().getY();
+        int width = getPeripheralPoint().getX() - xLeftUpperCorner;
+        int height = getPeripheralPoint().getY() - yLeftUpperCorner;
 
         graphics.setColor(getFillingColor());
         graphics.fillOval(xLeftUpperCorner, yLeftUpperCorner, width, height);
@@ -55,10 +54,10 @@ public class Ellipse extends Figure2D {
         @Override
         public Figure build() {
             return new Ellipse(
-                    getRefPoint(),
+                    getUpperLeftPoint(),
+                    getBottomRightPoint(),
                     getLineColor(),
-                    getFillingColor(),
-                    getPeripheralPoint()
+                    getFillingColor()
             );
         }
     }
