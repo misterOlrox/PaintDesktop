@@ -11,6 +11,7 @@ import drawing.lib.figure.Rectangle;
 import drawing.lib.figure.Rhomb;
 import drawing.lib.figure.Segment;
 import drawing.lib.figure.SymmetricPolygon;
+import drawing.lib.figure.Triangle;
 
 import java.util.function.Supplier;
 
@@ -23,6 +24,7 @@ public enum FigureBuilderType {
     ELLIPSE("Ellipse", Ellipse.Builder::new),
     CIRCLE("Circle", Circle.Builder::new),
     POLYGON("Polygon", Polygon.Builder::new),
+    TRIANGLE("Triangle", Triangle.Builder::new),
     RECTANGLE("Rectangle", Rectangle.Builder::new),
     RHOMB("Rhomb", Rhomb.Builder::new),
     SYMMETRIC_POLYGON("Symmetric Polygon", SymmetricPolygon.Builder::new);
