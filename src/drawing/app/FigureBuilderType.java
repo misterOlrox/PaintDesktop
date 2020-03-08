@@ -8,6 +8,7 @@ import drawing.lib.figure.PolyLine;
 import drawing.lib.figure.Polygon;
 import drawing.lib.figure.Ray;
 import drawing.lib.figure.Rectangle;
+import drawing.lib.figure.RegularTriangle;
 import drawing.lib.figure.Rhomb;
 import drawing.lib.figure.Segment;
 import drawing.lib.figure.SymmetricPolygon;
@@ -27,7 +28,8 @@ public enum FigureBuilderType {
     TRIANGLE("Triangle", Triangle.Builder::new),
     RECTANGLE("Rectangle", Rectangle.Builder::new),
     RHOMB("Rhomb", Rhomb.Builder::new),
-    SYMMETRIC_POLYGON("Symmetric Polygon", SymmetricPolygon.Builder::new);
+    SYMMETRIC_POLYGON("Symmetric Polygon", SymmetricPolygon.Builder::new),
+    REGULAR_TRIANGLE("Regular triangle", RegularTriangle.Builder::new);
 
 
     private String name;

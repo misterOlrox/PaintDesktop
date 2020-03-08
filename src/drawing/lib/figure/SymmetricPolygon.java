@@ -59,7 +59,6 @@ public class SymmetricPolygon extends Polygon {
                 dialog.setVisible(true);
             }
             sidesNumber = dialog.getSidesNumber();
-
         }
 
         @Override
@@ -85,6 +84,14 @@ public class SymmetricPolygon extends Polygon {
                     getLineColor(),
                     getFillingColor()
             );
+        }
+
+        public int getSidesNumber() {
+            return sidesNumber;
+        }
+
+        public void setSidesNumber(int sidesNumber) {
+            this.sidesNumber = sidesNumber;
         }
     }
 }
