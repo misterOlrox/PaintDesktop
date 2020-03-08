@@ -11,6 +11,7 @@ import drawing.lib.figure.Rectangle;
 import drawing.lib.figure.RegularTriangle;
 import drawing.lib.figure.Rhomb;
 import drawing.lib.figure.Segment;
+import drawing.lib.figure.Square;
 import drawing.lib.figure.SymmetricPolygon;
 import drawing.lib.figure.Triangle;
 
@@ -29,7 +30,8 @@ public enum FigureBuilderType {
     RECTANGLE("Rectangle", Rectangle.Builder::new),
     RHOMB("Rhomb", Rhomb.Builder::new),
     SYMMETRIC_POLYGON("Symmetric Polygon", SymmetricPolygon.Builder::new),
-    REGULAR_TRIANGLE("Regular triangle", RegularTriangle.Builder::new);
+    REGULAR_TRIANGLE("Regular triangle", RegularTriangle.Builder::new),
+    SQUARE("Square", Square.Builder::new);
 
 
     private String name;

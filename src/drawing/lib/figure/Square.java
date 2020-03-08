@@ -1,7 +1,7 @@
 package drawing.lib.figure;
 
 import java.awt.Color;
-import java.awt.Graphics;
+import java.util.ArrayList;
 
 /**
  * @author vitam
@@ -10,7 +10,28 @@ import java.awt.Graphics;
  */
 public class Square extends SymmetricPolygon {
 
-    public Square(Graphics graphics, Color lineColor, Color filling, Point refPoint, Point[] points, int sidesNumber) {
-        super();
+    protected Square(Point refPoint, Point peripheralPoint, Color lineColor, Color fillingColor) {
+        super(refPoint, peripheralPoint, 4, lineColor, fillingColor);
+    }
+
+    public static class Builder extends SymmetricPolygon.Builder {
+        @Override
+        public void addPoint(Point point) {
+            ArrayList<Point> points = getPoints();
+            if (points.isEmpty()) {
+                points.add(point);
+            }
+            setSidesNumber(4);
+        }
+
+        @Override
+        public Figure build() {
+            return new Square(
+                    getRefPoint(),
+                    getPoints().get(0),
+                    getLineColor(),
+                    getFillingColor()
+            );
+        }
     }
 }
