@@ -1,5 +1,7 @@
 package drawing.lib.figure;
 
+import drawing.lib.figure.abstractbuilder.TwoPointBuilder;
+
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -49,24 +51,7 @@ public class Ellipse extends Figure2D {
         this.peripheralPoint = peripheralPoint;
     }
 
-    public static class Builder extends Figure2D.Builder {
-        private Point peripheralPoint;
-
-        @Override
-        public void addPoint(Point point) {
-            this.peripheralPoint = point;
-        }
-
-        @Override
-        public boolean needsMorePoints() {
-            return getRefPoint() == null || peripheralPoint == null;
-        }
-
-        @Override
-        public boolean isReadyForBuild() {
-            return super.isReadyForBuild() && peripheralPoint != null;
-        }
-
+    public static class Builder extends TwoPointBuilder {
         @Override
         public Figure build() {
             return new Ellipse(
@@ -75,10 +60,6 @@ public class Ellipse extends Figure2D {
                     getFillingColor(),
                     getPeripheralPoint()
             );
-        }
-
-        public Point getPeripheralPoint() {
-            return peripheralPoint;
         }
     }
 }

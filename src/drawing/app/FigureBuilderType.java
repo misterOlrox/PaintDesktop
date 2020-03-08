@@ -7,6 +7,7 @@ import drawing.lib.figure.Line;
 import drawing.lib.figure.PolyLine;
 import drawing.lib.figure.Polygon;
 import drawing.lib.figure.Ray;
+import drawing.lib.figure.Rectangle;
 import drawing.lib.figure.Segment;
 import drawing.lib.figure.SymmetricPolygon;
 
@@ -18,9 +19,10 @@ public enum FigureBuilderType {
     RAY("Ray", Ray.Builder::new),
     LINE("Line", Line.Builder::new),
     POLYLINE("Polyline", PolyLine.Builder::new),
-    POLYGON("Polygon", Polygon.Builder::new),
     ELLIPSE("Ellipse", Ellipse.Builder::new),
     CIRCLE("Circle", Circle.Builder::new),
+    POLYGON("Polygon", Polygon.Builder::new),
+    RECTANGLE("Rectangle", Rectangle.Builder::new),
     SYMMETRIC_POLYGON("Symmetric Polygon", SymmetricPolygon.Builder::new);
 
 

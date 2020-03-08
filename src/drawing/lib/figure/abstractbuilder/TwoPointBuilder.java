@@ -1,0 +1,27 @@
+package drawing.lib.figure.abstractbuilder;
+
+import drawing.lib.figure.Figure2D;
+import drawing.lib.figure.Point;
+
+public abstract class TwoPointBuilder extends Figure2D.Builder {
+    private Point peripheralPoint;
+
+    @Override
+    public void addPoint(Point point) {
+        this.peripheralPoint = point;
+    }
+
+    @Override
+    public boolean needsMorePoints() {
+        return getRefPoint() == null || peripheralPoint == null;
+    }
+
+    @Override
+    public boolean isReadyForBuild() {
+        return super.isReadyForBuild() && peripheralPoint != null;
+    }
+
+    public Point getPeripheralPoint() {
+        return peripheralPoint;
+    }
+}
