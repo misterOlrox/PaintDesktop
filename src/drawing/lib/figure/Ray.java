@@ -27,8 +27,6 @@ public class Ray extends Segment {
         int resultY;
         double deltaX = getGuidePoint().getX() - refPoint.getX();
         double deltaY = getGuidePoint().getY() - refPoint.getY();
-        if (deltaX == 0 && deltaY == 0)
-            return getGuidePoint();
         if (Math.abs(deltaX) < Math.abs(deltaY)) {
             if (deltaY < 0) {
                 resultY = -1;
@@ -55,6 +53,13 @@ public class Ray extends Segment {
                     getGuidePoint(),
                     getLineColor()
             );
+        }
+
+        @Override
+        public void addPoint(Point point) {
+            if (!getRefPoint().equals(point)) {
+                super.addPoint(point);
+            }
         }
     }
 }

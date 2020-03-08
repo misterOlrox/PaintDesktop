@@ -16,6 +16,22 @@ public class Line extends Ray {
 
     @Override
     public void draw(Graphics graphics) {
+        super.draw(graphics);
+        getGuidePoint().move(
+                2 * getLocation().getX() - getGuidePoint().getX(),
+                2 * getLocation().getY() - getGuidePoint().getY()
+        );
+        super.draw(graphics);
+    }
 
+    public static class Builder extends Ray.Builder {
+        @Override
+        public Figure build() {
+            return new Line(
+                    getRefPoint(),
+                    getGuidePoint(),
+                    getLineColor()
+            );
+        }
     }
 }

@@ -43,4 +43,8 @@ public class Point {
     public double distanceTo(Point point) {
         return Math.sqrt((x - point.x) * (x - point.x) + (y - point.y) * (y - point.y));
     }
+
+    public boolean equals(Point other) {
+        return this.x == other.x && this.y == other.y;
+    }
 }
