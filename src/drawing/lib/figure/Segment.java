@@ -51,9 +51,8 @@ public class Segment extends Figure1D {
         public Builder() {}
 
         @Override
-        public Figure.Builder addPoint(Point point) {
+        public void addPoint(Point point) {
             this.guidePoint = point;
-            return this;
         }
 
         @Override

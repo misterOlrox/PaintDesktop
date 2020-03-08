@@ -53,9 +53,8 @@ public class Ellipse extends Figure2D {
         private Point peripheralPoint;
 
         @Override
-        public Figure.Builder addPoint(Point point) {
+        public void addPoint(Point point) {
             this.peripheralPoint = point;
-            return this;
         }
 
         @Override

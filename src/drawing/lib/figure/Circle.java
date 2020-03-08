@@ -4,13 +4,13 @@ import java.awt.Color;
 
 public class Circle extends Ellipse {
 
-    public Circle(Point refPoint, Color lineColor, Color fillingColor, Point peripheralPoint) {
-        int radius = (int) refPoint.distanceTo(peripheralPoint);
-        refPoint.subtract(radius, radius);
-        peripheralPoint.move(refPoint.getX() + 2 * radius, refPoint.getY() + 2 * radius);
+    public Circle(Point center, Point pointOnCircle, Color lineColor, Color fillingColor) {
+        int radius = (int) center.distanceTo(pointOnCircle);
+        center.subtract(radius, radius);
+        pointOnCircle.move(center.getX() + 2 * radius, center.getY() + 2 * radius);
 
-        this.setRefPoint(refPoint);
-        this.setPeripheralPoint(peripheralPoint);
+        this.setRefPoint(center);
+        this.setPeripheralPoint(pointOnCircle);
         this.setLineColor(lineColor);
         this.setFillingColor(fillingColor);
     }
@@ -20,9 +20,9 @@ public class Circle extends Ellipse {
         public Figure build() {
             return new Circle(
                     getRefPoint(),
+                    getPeripheralPoint(),
                     getLineColor(),
-                    getFillingColor(),
-                    getPeripheralPoint()
+                    getFillingColor()
             );
         }
     }

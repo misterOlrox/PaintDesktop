@@ -49,7 +49,7 @@ public class SymmetricPolygon extends Polygon {
         private static SymmetricPolygonDialog dialog = new SymmetricPolygonDialog();
 
         @Override
-        public Figure.Builder addPoint(Point point) {
+        public void addPoint(Point point) {
             ArrayList<Point> points = getPoints();
             if (points.isEmpty()) {
                 points.add(point);
@@ -60,7 +60,6 @@ public class SymmetricPolygon extends Polygon {
             }
             sidesNumber = dialog.getSidesNumber();
 
-            return this;
         }
 
         @Override

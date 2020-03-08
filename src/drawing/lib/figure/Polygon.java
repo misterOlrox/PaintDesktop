@@ -72,9 +72,8 @@ public class Polygon extends Figure2D {
         }
 
         @Override
-        public Figure.Builder addPoint(Point point) {
+        public void addPoint(Point point) {
             points.add(point);
-            return this;
         }
 
         @Override

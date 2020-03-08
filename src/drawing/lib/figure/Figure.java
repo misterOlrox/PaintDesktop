@@ -61,7 +61,7 @@ public abstract class Figure {
             return this;
         }
 
-        public abstract Builder addPoint(Point point);
+        public abstract void addPoint(Point point);
 
         public abstract boolean needsMorePoints();
 
